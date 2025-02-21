@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eatNow - Restro Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mt-5">
+        <div class="card-header">
+          <h2>Restro Dashboard</h2>
+        </div>
+        <div class="card-body">
+          <h4 th:text="'Hello, ' + ${username} + '!'"></h4>
+          <form action="/createDish" method="post">
+            <div class="form-group">
+              <label for="restro_id">Restro Id:</label>
+              <input type="text" class="form-control" id="restro_id" name="restro_id" required>
+            </div>
+            <div class="form-group">
+              <label for="dishName">Dish Name:</label>
+              <input type="text" class="form-control" id="dishName" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="dishDescription">Description:</label>
+              <textarea class="form-control" id="dishDescription" name="description" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Dish</button>
+          </form>
+          <hr>
+          <h3>List of Dishes</h3>
+          <ul class="list-group">
+            <li th:each="dish : ${dishes}" class="list-group-item">
+              <h5 th:text="${dish.name}"></h5>
+              <p th:text="${dish.description}"></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
